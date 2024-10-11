@@ -1,0 +1,12 @@
+# Datatypes (KEYWORD1)
+skip_cycle          KEYWORD1
+total_objects       KEYWORD1
+object_detected     KEYWORD1
+cycles              KEYWORD1
+is_object_complete  KEYWORD1
+object              KEYWORD1
+isready             KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+parse_data  KEYWORD2
+configure   KEYWORD2
