@@ -16,7 +16,7 @@ MR76 radar;
 
 void setup()
 {
-  Serial.begin(500000);
+  Serial.begin(115200);
   
   // Initialize MCP2515 running at 16MHz with a baudrate of 500kb/s and the masks and filters disabled.
   if(CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK)
@@ -35,8 +35,12 @@ void loop()
 {
   if(!digitalRead(CAN0_INT))                         // If CAN0_INT pin is low, read receive buffer
   {
+    
     CAN0.readMsgBuf(&rxId, &len, rxBuf);      
     radar.parse_data(rxId, len, rxBuf);
+    // Serial.print(radar._total_objects);
+    // Serial.print(radar.cycles);
+    // Serial.println(rxId,HEX);
     if(radar.isready()){
       sprintf(msgString, "Found %d objects, %d", radar.object_detected, radar.is_object_complete);
       Serial.println(msgString);
